@@ -1,9 +1,9 @@
-fastapi
-uvicorn
+fastapi==0.115.0
+uvicorn==0.30.6
 tensorflow==2.15.0
-numpy
-opencv-python-headless
-pillow
-python-multipart
-h5py
+numpy==1.26.4
+opencv-python-headless==4.9.0.80
+pillow==10.2.0
+python-multipart==0.0.9
+h5py==3.10.0
 protobuf==3.20.3

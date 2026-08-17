@@ -2,8 +2,10 @@ import numpy as np
 import cv2
 
 
-MIN_VEGETATION_RATIO = 0.08
-MIN_VEGETATION_COMPONENT_RATIO = 0.04
+MIN_VEGETATION_RATIO = 0.05
+MIN_VEGETATION_COMPONENT_RATIO = 0.015
+STRONG_VEGETATION_RATIO = 0.25
+STRONG_VEGETATION_COMPONENT_RATIO = 0.15
 MIN_EDGE_DENSITY_IN_VEGETATION = 0.08
 MIN_HUE_STD_IN_VEGETATION = 6.0
 SECONDARY_SCORE_THRESHOLD = 0.45
@@ -83,6 +85,15 @@ def is_out_of_domain(quality: dict) -> tuple[bool, str | None]:
 
     if not (has_enough_vegetation and has_coherent_blob):
         return True, "A imagem nao parece conter vegetacao/lavoura suficiente para diagnostico de soja."
+
+    # Uma folha ou um dossel que ocupa grande parte da imagem não deve ser
+    # recusado apenas por ter pouca variação de matiz ou textura suave.
+    has_strong_vegetation_area = (
+        quality["vegetation_ratio"] >= STRONG_VEGETATION_RATIO
+        and quality["vegetation_component_ratio"] >= STRONG_VEGETATION_COMPONENT_RATIO
+    )
+    if has_strong_vegetation_area:
+        return False, None
 
     if secondary_texture_score(quality) < SECONDARY_SCORE_THRESHOLD:
         return True, "A area verde detectada nao apresenta textura compativel com folha de soja."
