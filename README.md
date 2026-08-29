@@ -25,6 +25,7 @@ O objetivo é facilitar levantamentos de campo e análises de imagens captadas p
 - [Como a análise funciona](#como-a-análise-funciona)
 - [Pré-requisitos](#pré-requisitos)
 - [Execução local](#execução-local)
+- [Teste online opcional](#teste-online-opcional)
 - [Execução com Docker](#execução-com-docker)
 - [Rotas da API](#rotas-da-api)
 - [Exemplos de uso](#exemplos-de-uso)
@@ -106,6 +107,25 @@ Em Linux ou macOS, a ativação do ambiente virtual é feita com:
 ```bash
 source .venv/bin/activate
 ```
+
+## Teste online opcional
+
+Se quiser apenas testar a API, sem instalar dependências ou escrever código, acesse a documentação interativa do FastAPI:
+
+- [Abrir documentação interativa (Swagger UI)](https://tccamsamericana-api-doencas-soja.hf.space/docs)
+
+Nela, é possível enviar imagens diretamente para os endpoints `POST /predict` e `POST /predict/batch`, além de visualizar as respostas em tempo real.
+
+Os links públicos da instância hospedada são:
+
+| Recurso | Link |
+|---|---|
+| Status da API | [https://tccamsamericana-api-doencas-soja.hf.space/](https://tccamsamericana-api-doencas-soja.hf.space/) |
+| Documentação interativa | [https://tccamsamericana-api-doencas-soja.hf.space/docs](https://tccamsamericana-api-doencas-soja.hf.space/docs) |
+| Análise de uma imagem | [https://tccamsamericana-api-doencas-soja.hf.space/predict](https://tccamsamericana-api-doencas-soja.hf.space/predict) |
+| Análise em lote | [https://tccamsamericana-api-doencas-soja.hf.space/predict/batch](https://tccamsamericana-api-doencas-soja.hf.space/predict/batch) |
+
+> Os endpoints de análise aceitam somente requisições `POST`. Para testar pelo navegador, use a documentação interativa; os links de `/predict` e `/predict/batch` são úteis para integrações e clientes HTTP.
 
 ## Execução com Docker
 

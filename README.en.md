@@ -13,6 +13,7 @@ The service is intended for field surveys and images collected with mobile devic
 - [How an image is processed](#how-an-image-is-processed)
 - [Requirements](#requirements)
 - [Run locally](#run-locally)
+- [Optional online test](#optional-online-test)
 - [Run with Docker](#run-with-docker)
 - [API endpoints](#api-endpoints)
 - [Usage examples](#usage-examples)
@@ -94,6 +95,25 @@ On Linux or macOS, activate the virtual environment with:
 ```bash
 source .venv/bin/activate
 ```
+
+## Optional online test
+
+To try the API without installing dependencies or writing code, open the interactive FastAPI documentation:
+
+- [Open interactive documentation (Swagger UI)](https://tccamsamericana-api-doencas-soja.hf.space/docs)
+
+From this page, you can upload images directly to the `POST /predict` and `POST /predict/batch` endpoints and view the responses in real time.
+
+Public links for the hosted instance:
+
+| Resource | Link |
+|---|---|
+| API status | [https://tccamsamericana-api-doencas-soja.hf.space/](https://tccamsamericana-api-doencas-soja.hf.space/) |
+| Interactive documentation | [https://tccamsamericana-api-doencas-soja.hf.space/docs](https://tccamsamericana-api-doencas-soja.hf.space/docs) |
+| Single-image analysis | [https://tccamsamericana-api-doencas-soja.hf.space/predict](https://tccamsamericana-api-doencas-soja.hf.space/predict) |
+| Batch analysis | [https://tccamsamericana-api-doencas-soja.hf.space/predict/batch](https://tccamsamericana-api-doencas-soja.hf.space/predict/batch) |
+
+> The analysis endpoints only accept `POST` requests. Use the interactive documentation to test them in a browser; the `/predict` and `/predict/batch` links are intended for HTTP clients and integrations.
 
 ## Run with Docker
 
